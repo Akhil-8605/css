@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Frame Structure</title>
+</head>
+<body>
+    <h1>Q.1) Write a script for creating  frame structure Having two frames. One frame containing buthon as “click here !”, and after clicking this button an image should open in the second frame of that child window.</h1>
+    <!-- Create a frameset to divide the window into two frames -->
+    <frameset rows="30%, 70%">
+        <!-- Top frame containing the button -->
+        <frame name="topFrame" src="topFrame.html">
+
+        <!-- Bottom frame where the image will be displayed -->
+        <frame name="bottomFrame">
+    </frameset>
+
+    <!-- Top Frame Content -->
+    <script type="text/javascript">
+        // Creating the content of the top frame dynamically
+        const topFrameDoc = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Top Frame</title>
+            </head>
+            <body>
+                <div style="text-align: center; padding: 20px;">
+                    <button onclick="parent.showImage()">Click Here!</button>
+                </div>
+            </body>
+            </html>
+        `;
+        document.querySelector("frame[name='topFrame']").contentDocument.write(topFrameDoc);
+
+        // Define the function to show the image in the bottom frame
+        function showImage() {
+            const bottomFrameDoc = `
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Bottom Frame</title>
+                </head>
+                <body>
+                    <div style="text-align: center; padding: 20px;">
+                        <img src="https://via.placeholder.com/400" alt="Sample Image">
+                    </div>
+                </body>
+                </html>
+            `;
+            document.querySelector("frame[name='bottomFrame']").contentDocument.write(bottomFrameDoc);
+        }
+    </script>
+</body>
+</html>

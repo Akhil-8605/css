@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Develop javascript to convert the given character to unicode and vice verca.</h1>
+    <div>
+        <h2>Character to Unicode</h2>
+        <label for="charInput">Enter Character:</label>
+        <input type="text" id="charInput" maxlength="1">
+        <button onclick="charToUnicode()">Convert</button>
+        <p id="charToUnicodeResult"></p>
+    </div>
+
+    <div>
+        <h2>Unicode to Character</h2>
+        <label for="unicodeInput">Enter Unicode (e.g., 65 for 'A'):</label>
+        <input type="text" id="unicodeInput">
+        <button onclick="unicodeToChar()">Convert</button>
+        <p id="unicodeToCharResult"></p>
+    </div>
+
+    <script>
+
+        function charToUnicode() {
+            const char = document.getElementById("charInput").value;
+            if (char.length === 1) {
+                const unicode = char.charCodeAt(0);
+                document.getElementById("charToUnicodeResult").textContent = `Unicode of '${char}' is: ${unicode}`;
+            } else {
+                document.getElementById("charToUnicodeResult").textContent = "Please enter a single character.";
+            }
+        }
+
+        function unicodeToChar() {
+            const unicode = document.getElementById("unicodeInput").value;
+            if (!isNaN(unicode) && unicode.trim() !== "") {
+                const char = String.fromCharCode(parseInt(unicode));
+                document.getElementById("unicodeToCharResult").textContent = `Character for Unicode ${unicode} is: '${char}'`;
+            } else {
+                document.getElementById("unicodeToCharResult").textContent = "Please enter a valid Unicode number.";
+            }
+        }
+    </script>
+</body>
+
+</html>

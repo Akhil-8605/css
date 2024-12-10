@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menus Example</title>
+    <style>
+        /* Pull-Down Menu Styles */
+        #pull-down-menu {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #ccc;
+            position: absolute;
+            background-color: #fff;
+            width: 200px;
+        }
+
+        #pull-down-menu li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #pull-down-menu li:hover {
+            background-color: #eee;
+        }
+
+        /* Scroll-Down Menu Styles */
+        #scroll-down-menu {
+            height: 100px;
+            width: 200px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        #scroll-down-menu div {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #scroll-down-menu div:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Write a JavaScript to create a
+        I)pull – down , ii)scroll-down, iii)drop-down (one of this) menu with four options , Once the user will select
+        one of the options then user will be redirected to that site. </h1>
+    <br>
+
+    <!-- Pull-Down Menu -->
+    <h2>Pull-Down Menu</h2>
+    <button id="menu-button">Open Pull-Down Menu</button>
+    <ul id="pull-down-menu">
+        <li data-url="https://www.google.com">Google</li>
+        <li data-url="https://www.facebook.com">Facebook</li>
+        <li data-url="https://www.twitter.com">Twitter</li>
+        <li data-url="https://www.github.com">GitHub</li>
+    </ul>
+
+    <br><br><br><br>
+    <!-- Scroll-Down Menu -->
+    <h2>Scroll-Down Menu</h2>
+    <div id="scroll-down-menu">
+        <div data-url="https://www.google.com">Google</div>
+        <div data-url="https://www.facebook.com">Facebook</div>
+        <div data-url="https://www.twitter.com">Twitter</div>
+        <div data-url="https://www.github.com">GitHub</div>
+    </div>
+
+    <br><br><br><br>
+    <!-- Drop-Down Menu -->
+    <h2>Drop-Down Menu</h2>
+    <label for="drop-down-menu">Choose a site:</label>
+    <select id="drop-down-menu">
+        <option value="">-- Select an option --</option>
+        <option value="https://www.google.com">Google</option>
+        <option value="https://www.facebook.com">Facebook</option>
+        <option value="https://www.twitter.com">Twitter</option>
+        <option value="https://www.github.com">GitHub</option>
+    </select>
+
+    <script>
+        // Pull-Down Menu Logic
+        const pullDownButton = document.getElementById("menu-button");
+        const pullDownMenu = document.getElementById("pull-down-menu");
+
+        pullDownButton.addEventListener("click", () => {
+            pullDownMenu.style.display = pullDownMenu.style.display === "block" ? "none" : "block";
+        });
+
+        pullDownMenu.addEventListener("click", (e) => {
+            const url = e.target.getAttribute("data-url");
+            if (url) window.location.href = url;
+        });
+
+        // Scroll-Down Menu Logic
+        const scrollDownMenu = document.getElementById("scroll-down-menu");
+
+        scrollDownMenu.addEventListener("click", (e) => {
+            const url = e.target.getAttribute("data-url");
+            if (url) window.location.href = url;
+        });
+
+        // Drop-Down Menu Logic
+        const dropDownMenu = document.getElementById("drop-down-menu");
+
+        dropDownMenu.addEventListener("change", () => {
+            const url = dropDownMenu.value;
+            if (url) window.location.href = url;
+        });
+
+    </script>
+</body>
+
+</html>

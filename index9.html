@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h4>Write HTML code to design a form that displays textboxes for accepting UserID and Aadhar No. and a SUBMIT button. UserID should contain 10 alphanumeric characters and must start with Capital Letter. Aadhar No. should contain 12 digits in the format nnnn nnnn nnnn. Write JavaScript code to validate the UserID and Aadhar No. when the user clicks on SUBMIT button.</h1>
+    <form id="userForm">
+        <div class="form-group">
+            <label for="userID">UserID:</label>
+            <input type="text" id="userID" name="userID" required>
+            <div id="userIDError" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="aadhar">Aadhar No.:</label>
+            <input type="text" id="aadhar" name="aadhar" required>
+            <div id="aadharError" class="error"></div>
+        </div>
+
+        <button type="button" onclick="validateForm()">SUBMIT</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            // Clear previous errors
+            document.getElementById('userIDError').textContent = '';
+            document.getElementById('aadharError').textContent = '';
+
+            const userID = document.getElementById('userID').value;
+            const aadhar = document.getElementById('aadhar').value;
+
+            let isValid = true;
+
+            // Validate UserID (10 alphanumeric characters starting with a capital letter)
+            const userIDRegex = /^[A-Z][A-Za-z0-9]{9}$/;
+            if (!userIDRegex.test(userID)) {
+                document.getElementById('userIDError').textContent = "UserID must be 10 alphanumeric characters and start with a capital letter.";
+                isValid = false;
+            }
+
+            // Validate Aadhar No. (12 digits in nnnn nnnn nnnn format)
+            const aadharRegex = /^\d{4} \d{4} \d{4}$/;
+            if (!aadharRegex.test(aadhar)) {
+                document.getElementById('aadharError').textContent = "Aadhar No. must be in the format nnnn nnnn nnnn.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Form submitted successfully!");
+            }
+        }
+    </script>
+</body>
+</html>

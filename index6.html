@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Write javascript to create a object "student" with properties roll number, name, branch, year. Delete branch property and display remaining properties of student object.</h1>
+    <script>
+        var student = {
+            roll: 202,
+            name: 'akhil',
+            branch: 'co',
+            year: '3'
+        }
+        document.write("Before Deletion<br>"+student.roll+'<br>'+student.name+'<br>'+student.branch+'<br>'+student.year);
+        delete student.branch;
+
+        document.write("<br><br>After Deletion<br>"+student.roll+'<br>'+student.name+'<br>'+student.year);
+    </script>
+</body>
+</html>
