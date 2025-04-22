@@ -1,0 +1,27 @@
+<?php
+
+// A simple class
+class Car {
+    public $brand;
+    public $color;
+
+    public function __construct($brand, $color) {
+        $this->brand = $brand;
+        $this->color = $color;
+    }
+}
+
+// Create an object
+$car = new Car("Toyota", "Red");
+
+// Serialize the object
+$serializedCar = serialize($car);
+echo "Serialized object:\n";
+echo $serializedCar . "\n";
+
+// Unserialize the object
+$restoredCar = unserialize($serializedCar);
+echo "Unserialized object:\n";
+print_r($restoredCar);
+
+?>

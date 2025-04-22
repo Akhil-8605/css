@@ -1,0 +1,26 @@
+<?php
+trait Logger {
+    public function log($message) {
+        echo "Log: $message\n";
+    }
+}
+
+trait Notifier {
+    public function notify($message) {
+        echo "Notify: $message\n";
+    }
+}
+
+class User {
+    use Logger, Notifier;
+
+    public function createUser($name) {
+        echo "Creating user: $name\n";
+        $this->log("User $name created.");
+        $this->notify("User $name has been created.");
+    }
+}
+
+$user = new User();
+$user->createUser("Alice");
+?>
