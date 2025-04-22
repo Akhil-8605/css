@@ -1,0 +1,27 @@
+<?php
+
+// A simple class
+class Animal {
+    public $name = "Dog";
+    public $legs = 4;
+
+    public function speak() {
+        return "Bark!";
+    }
+}
+
+// Create an object
+$animal = new Animal();
+
+// Get class name
+echo "Class name: " . get_class($animal) . "\n";
+
+// Get class methods
+echo "Methods:\n";
+print_r(get_class_methods($animal));
+
+// Get public properties
+echo "Public properties:\n";
+print_r(get_object_vars($animal));
+
+?>
